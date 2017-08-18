@@ -48,8 +48,7 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="    WRITE HERE"
-        android:textSize="50dp"
+        android:hint=" WRITE HERE"
         android:layout_alignParentEnd="true" />
 
     <Button
