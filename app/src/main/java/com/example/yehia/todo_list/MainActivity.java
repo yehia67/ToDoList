@@ -1,5 +1,6 @@
 package com.example.yehia.todo_list;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.AB_add) {
             // do something here
+            startActivity(new Intent(this,AddTask.class));
         }
         return super.onOptionsItemSelected(item);
     }
