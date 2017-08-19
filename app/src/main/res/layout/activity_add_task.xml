@@ -59,6 +59,7 @@
         android:layout_below="@+id/ET_taskdescr"
         android:layout_marginStart="55dp"
         android:layout_marginTop="15dp"
+        android:onClick="Onclick"
         android:text="Save" />
 
     <Button
@@ -68,5 +69,6 @@
         android:layout_alignBottom="@+id/bt_save"
         android:layout_alignEnd="@+id/ET_taskname"
         android:layout_marginEnd="49dp"
+        android:onClick="Onclick"
         android:text="Discard" />
 </RelativeLayout>
