@@ -18,21 +18,28 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 ListView listView;
 ArrayList<String> tasks = new ArrayList<>();
-
+    String recive;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.lv);
+        try {
+             recive = getIntent().getStringExtra("key");
+            tasks.add(recive);
+        }catch (Exception e)
+        {
+            recive = "";
+            tasks.add(recive);
+        }
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,android.R.id.text1,tasks);
         listView.setAdapter(arrayAdapter);
          listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
              @Override
              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                 String taskname = getIntent().getStringExtra("name") ;
-                 String recive = getIntent().getStringExtra("key");
-                 tasks.add(taskname);
+
+
                  int itemPosition     = position;
                  String  itemValue    = (String) listView.getItemAtPosition(position);
                  AlertDialog.Builder builder = new AlertDialog.Builder(null);

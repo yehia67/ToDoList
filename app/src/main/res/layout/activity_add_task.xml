@@ -10,65 +10,40 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ET_taskname"
-        android:layout_alignBottom="@+id/ET_taskname"
 
-        android:layout_alignParentStart="true"
-        android:text="Task:-"
+        android:text="Write your task :-"
         android:textSize="30dp"
-        tools:textColor="@android:color/black" />
-
-    <EditText
-        android:id="@+id/ET_taskname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="Enter your task here!!"
-        android:textSize="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:text="TASK DESCRIPTION:-"
         tools:textColor="@android:color/black"
-        android:textSize="30dp"
-        android:layout_below="@+id/ET_taskname"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
 
     <EditText
         android:id="@+id/ET_taskdescr"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint=" WRITE HERE"
-        android:layout_alignParentEnd="true" />
+        android:hint=" WRITE HERE YOUR TASK.."
+        android:layout_above="@+id/bt_save"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/bt_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ET_taskdescr"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="15dp"
         android:onClick="Onclick"
-        android:text="Save" />
+        android:text="Save"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="63dp" />
 
     <Button
         android:id="@+id/bt_discard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/bt_save"
-        android:layout_alignEnd="@+id/ET_taskname"
-        android:layout_marginEnd="49dp"
         android:onClick="Onclick"
         android:text="Discard" />
 </RelativeLayout>

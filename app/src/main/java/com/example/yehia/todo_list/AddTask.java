@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 
 public class AddTask extends AppCompatActivity {
-   EditText TaskName,TaskDescripition;
+   EditText TaskDescripition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        TaskName = (EditText) findViewById(R.id.ET_taskname);
+
         TaskDescripition = (EditText) findViewById(R.id.ET_taskdescr);
     }
 public void Onclick(View view)
@@ -20,15 +20,15 @@ public void Onclick(View view)
     switch (view.getId())
     {
         case R.id.bt_discard:
-            startActivity(new Intent(this,AddTask.class));
+            startActivity(new Intent(this,MainActivity.class));
             break;
         case R.id.bt_save:
-            Intent intent = new Intent(this,AddTask.class);
-            String getName = TaskName.getText().toString();
+            Intent intent = new Intent(this,MainActivity.class);
+
             String getDesc = TaskDescripition.getText().toString();
-            String send = "task name :- " + getName + "\n" + "Description :" + "\n"+ getDesc;
-            intent.putExtra("key",send);
-            intent.putExtra("name",getName);
+
+            intent.putExtra("key",getDesc);
+
             startActivity(intent);
     }
 }
