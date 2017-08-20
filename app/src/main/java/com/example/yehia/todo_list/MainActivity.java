@@ -24,12 +24,12 @@ ArrayList<String> tasks = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.lv);
-        try {
-             recive = getIntent().getStringExtra("key");
+       if (getIntent().getStringExtra("key") != null)
+       {  recive = getIntent().getStringExtra("key");
             tasks.add(recive);
-        }catch (Exception e)
+        }else
         {
-            recive = "";
+            recive = "ee";
             tasks.add(recive);
         }
 
@@ -42,7 +42,7 @@ ArrayList<String> tasks = new ArrayList<>();
 
                  int itemPosition     = position;
                  String  itemValue    = (String) listView.getItemAtPosition(position);
-                 AlertDialog.Builder builder = new AlertDialog.Builder(null);
+                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                  builder.setTitle("task " + itemValue);
                  builder.setMessage(recive);
 
