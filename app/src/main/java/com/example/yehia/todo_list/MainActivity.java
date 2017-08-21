@@ -2,6 +2,10 @@ package com.example.yehia.todo_list;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v7.app.RecycleView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,45 +20,27 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-ListView listView;
-ArrayList<String> tasks = new ArrayList<>();
-    String recive;
+
+    SQLiteDatabase  mDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.lv);
-       if (getIntent().getStringExtra("key") != null)
-       {  recive = getIntent().getStringExtra("key");
-            tasks.add(recive);
-        }else
-        {
-            recive = "ee";
-            tasks.add(recive);
-        }
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,android.R.id.text1,tasks);
-        listView.setAdapter(arrayAdapter);
-         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-             @Override
-             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-                 int itemPosition     = position;
-                 String  itemValue    = (String) listView.getItemAtPosition(position);
-                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                 builder.setTitle("task " + itemValue);
-                 builder.setMessage(recive);
 
-                 // add a button
-                 builder.setPositiveButton("OK", null);
-
-                 // create and show the alert dialog
-                 AlertDialog dialog = builder.create();
-                 dialog.show();
-             }
-         });
-
+    }
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+        // COMPLETED (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
+        //get the id of the item being swiped
+        long id = (long) viewHolder.itemView.getTag();
+        // COMPLETED (9) call removeGuest and pass through that id
+        //remove from DB
+        removeTask(id);
+        // COMPLETED (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
+        //update the list
+        mAdapter.swapCursor(getAllGuests());
     }
 
     @Override
@@ -62,7 +48,17 @@ ArrayList<String> tasks = new ArrayList<>();
         getMenuInflater().inflate(R.menu.actionbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    private Cursor getAllGuests() {
+        return mDb.query(
+                Contract.tasks.table,
+                null,
+                null,
+                null,
+                null,
+                null,
+                Contract.tasks.colume
+        );
+    }
     // handle button activities
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -73,5 +69,9 @@ ArrayList<String> tasks = new ArrayList<>();
             startActivity(new Intent(this,AddTask.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+    private boolean removeTask(long id) {
+
+        return mDb.delete(Contract.tasks.table, Contract.tasks._ID + "=" + id, null) > 0;
     }
 }
