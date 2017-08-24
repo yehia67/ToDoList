@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
 public class Contract {
     public static  final class tasks implements BaseColumns{
         public static final  String table = "task";
-        public static final  String colume = "daily task";
-        public static final  String row = "row";
+        public static final  String colume_desc = "daily task";
+        public static final  String colume_prior = "row";
     }
 }

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Ck_height"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yehia.todo_list.AddTask">
@@ -11,41 +12,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Write your task :-"
-        android:textSize="30dp"
-        tools:textColor="@android:color/black"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="13dp"
+        android:text="Write your task :-"
+        android:textSize="30dp"
+        tools:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/ET_taskdescr"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint=" WRITE HERE YOUR TASK.."
+        android:layout_height="250dp"
         android:layout_above="@+id/bt_save"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:hint=" WRITE HERE YOUR TASK.."
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/bt_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="Onclick"
-        android:text="Discrad"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="63dp"
         android:layout_marginEnd="51dp"
-        android:layout_marginBottom="63dp" />
+        android:onClick="Onclick"
+        android:text="Discrad" />
 
     <Button
         android:id="@+id/bt_discard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="Onclick"
-        android:text="Save"
-        android:layout_below="@+id/ET_taskdescr"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="38dp" />
+        android:layout_below="@+id/ET_taskdescr"
+        android:layout_marginStart="38dp"
+        android:onClick="Onclick"
+        android:text="Save" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="22dp"
+        android:text="Priority" />
+
+    <CheckBox
+        android:id="@+id/ck_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="12dp"
+        android:text="Height" />
+
+    <CheckBox
+        android:id="@+id/ck_meduim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/checkBox"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginStart="34dp"
+        android:text="medium" />
+
+    <CheckBox
+        android:id="@+id/ck_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ck_meduim"
+        android:layout_alignStart="@+id/bt_save"
+        android:layout_marginStart="15dp"
+        android:checked="false"
+        android:text="Low" />
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.RecycleView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,18 +16,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import com.example.yehia.todo_list.CustomCursorAdapter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    CheckBox height,meduim,low;
     SQLiteDatabase  mDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       final CheckBox  height =  (CheckBox) findViewById(R.id.ck_height);
+        final CheckBox  meduim = (CheckBox) findViewById(R.id.ck_meduim);
+        final CheckBox  low = (CheckBox) findViewById(R.id.ck_low);
 
 
 
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         removeTask(id);
         // COMPLETED (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
         //update the list
-        mAdapter.swapCursor(getAllGuests());
+        TasksAdapter.swapCursor(getAllGuests());
     }
 
     @Override
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                Contract.tasks.colume
+                Contract.tasks.colume_desc
         );
     }
     // handle button activities
@@ -76,3 +81,17 @@ public class MainActivity extends AppCompatActivity {
         return mDb.delete(Contract.tasks.table, Contract.tasks._ID + "=" + id, null) > 0;
     }
 }
+    private int getPriorityColor(int priority) {
+        int priorityColor = 0;
+
+        switch(priority) {
+            case 1: priorityColor = ContextCompat.getColor(mContext, R.color.materialRed);
+                break;
+            case 2: priorityColor = ContextCompat.getColor(mContext, R.color.materialOrange);
+                break;
+            case 3: priorityColor = ContextCompat.getColor(mContext, R.color.materialYellow);
+                break;
+            default: break;
+        }
+        return priorityColor;
+    }

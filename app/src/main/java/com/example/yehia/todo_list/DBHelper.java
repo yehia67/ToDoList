@@ -19,8 +19,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-     final String SQL_Create_table = String.format("task i should do",Contract.class);
-        sqLiteDatabase.execSQL(SQL_Create_table);
+        final String CREATE_TABLE = "CREATE TABLE "  + Contract.tasks.table + " (" +
+                Contract.tasks._ID                + " INTEGER PRIMARY KEY, " +
+                Contract.tasks.colume_desc+ " TEXT NOT NULL, " +
+               Contract.tasks.colume_prior   + " INTEGER NOT NULL);";
+        sqLiteDatabase.execSQL(CREATE_TABLE);
     }
 
     @Override
